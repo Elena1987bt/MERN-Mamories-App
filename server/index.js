@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 const postRouter = require('./routes/postsRoutes');
+const userRouter = require('./routes/userRoutes');
 
 const app = express();
 dotenv.config();
@@ -17,7 +18,7 @@ app.options('*', cors());
 
 app.get('/', (req, res) => res.send('Hello from memories API'));
 app.use('/posts', postRouter);
-
+app.use('/user', userRouter);
 // DATABASE CONNECTION
 const CONNECTION_URL = process.env.CONNECTION_URL;
 const port = process.env.PORT || 5000;
