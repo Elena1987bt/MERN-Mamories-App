@@ -32,7 +32,6 @@ const Form = ({ currentId, setCurrentId }) => {
       dispatch(createPost({ ...postData, name: user?.result.name }));
     }
     clear();
-    // window.location.reload();
   };
   const clear = () => {
     setCurrentId(null);
