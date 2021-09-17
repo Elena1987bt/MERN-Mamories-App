@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const jwb = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 
 exports.signIn = async (req, res) => {
@@ -46,12 +46,13 @@ exports.signUp = async (req, res) => {
       email,
       password: hashedPassword,
     });
+    newUser.save();
+    console.log(newUser);
     // 5. Create jwt
-    const token = jwt.sign({ email: user.email, id: user._id }, 'test', {
+    const token = jwt.sign({ email: newUser.email, id: newUser._id }, 'test', {
       expiresIn: '1h',
     });
-    newUser.save();
-    res.status(201).json({ user: newUser, token });
+    res.status(201).json({ result: newUser, token });
   } catch (error) {
     res.status(500).json({ message: 'Something went wrong' });
   }

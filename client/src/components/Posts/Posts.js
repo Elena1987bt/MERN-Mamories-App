@@ -11,7 +11,9 @@ const Posts = ({ setCurrentId }) => {
 
   // console.log(posts);
   return !posts.length ? (
-    <CircularProgress />
+    <div className={classes.loading}>
+      <CircularProgress />
+    </div>
   ) : (
     <Grid
       className={classes.container}
