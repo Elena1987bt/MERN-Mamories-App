@@ -3,15 +3,20 @@ const router = express.Router();
 
 const {
   getPosts,
+  getPost,
   createPost,
   updatePost,
   deletePost,
   likePost,
+  getPostsBySearch,
 } = require('../controllers/postsController');
 
 const auth = require('../middleware/auth');
 
+router.get('/search', getPostsBySearch);
 router.get('/', getPosts);
+router.get('/:id', getPost);
+
 router.post('/', auth, createPost);
 router.patch('/:id', auth, updatePost);
 router.delete('/:id', auth, deletePost);
