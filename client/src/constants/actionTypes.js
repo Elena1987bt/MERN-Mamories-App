@@ -4,6 +4,7 @@ export const DELETE = 'DELETE_POST';
 export const FETCH_ALL = 'FETCH_ALL_POSTS';
 export const FETCH_POST = 'FETCH_POST';
 export const LIKE = 'LIKE_POST';
+export const COMMENT = 'COMMENT_POST';
 export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
 export const FETCH_POST_BY_SEARCH = 'FETCH_POST_BY_SEARCH';
