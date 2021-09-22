@@ -32,7 +32,7 @@ mongoose
     console.log('Connected to the database...');
   })
   .catch((err) => {
-    console.log(err.message + 123);
+    console.log(err.message);
   });
 
 // SERVER

@@ -22,7 +22,7 @@ exports.getPosts = async (req, res) => {
 };
 exports.getPostsBySearch = async (req, res) => {
   const { searchQuery, tags } = req.query;
-  console.log(searchQuery, tags);
+  // console.log(searchQuery, tags);
   try {
     const title = new RegExp(searchQuery, 'i');
     const posts = await Post.find({
@@ -122,4 +122,16 @@ exports.likePost = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+};
+
+exports.commentPost = async (req, res) => {
+  const { id } = req.params;
+  const { value } = req.body;
+
+  const post = await Post.findById(id);
+  post.comments.push(value);
+  const updatedPost = await Post.findByIdAndUpdate(id, post, {
+    new: true,
+  });
+  res.status(200).json(updatedPost);
 };
